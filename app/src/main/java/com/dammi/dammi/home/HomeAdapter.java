@@ -1,6 +1,7 @@
 package com.dammi.dammi.home;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -28,15 +29,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         data=new ArrayList<>();
 
         data.add("SLIDE SHOW HERE");
-        data.add(new GridItem("DAMMI TOURS", R.drawable.nepali));
-        data.add(new GridItem("DAMMI TOURS", R.drawable.nepali));
-        data.add(new GridItem("DAMMI TOURS", R.drawable.nepali));
-        data.add(new GridItem("DAMMI TOURS", R.drawable.nepali));
-        data.add(new GridItem("DAMMI TOURS", R.drawable.nepali));
-        data.add(new GridItem("DAMMI TOURS", R.drawable.nepali));
-        data.add(new GridItem("DAMMI TOURS", R.drawable.nepali));
-        data.add(new GridItem("DAMMI TOURS", R.drawable.nepali));
-
+        data.add(new GridItem("FEATURED\nEXPERIENCES", R.drawable.geothermal));
+        data.add(new GridItem("DAMMI\nACTIVITIES", R.drawable.colombo));
+        data.add(new GridItem("DAMMI\nHOSTS", R.drawable.burren));
 
     }
     @Override
@@ -71,8 +66,8 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                  TextSliderView textSliderView = new TextSliderView(context);
 
                  textSliderView
-                         .description("Daami last DAMMI!!!")
-                         .image(R.drawable.nepali);
+                         .description("Photo of the day.. Essor Kafley")
+                         .image(R.drawable.in_focus3);
 
                  slideHolder.sliderShow.addSlider(textSliderView);
 
@@ -84,6 +79,10 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                  GridItemViewHolder holder=(GridItemViewHolder)viewHolder;
                  holder.image.setImageResource(item.image);
                  holder.title.setText(item.title);
+
+//                 ///FOR FONT ICON
+//                 Typeface font = Typeface.createFromAsset(context.getAssets(), "icomoon.ttf" );
+//                 holder.arrow.setTypeface(font);
                  break;
 
              default:

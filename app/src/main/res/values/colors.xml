@@ -2,7 +2,22 @@
 <resources>
     <color name="colorPrimary">#ff3cc3d2</color>
     <color name="colorPrimaryDark">#fe3cc3d2</color>
-    <color name="colorAccent">#ff4081</color>
+    <color name="colorAccent">@color/patro_grey</color>
 
     <color name="white">#fff</color>
+
+    <color name="window_background">#FFF5F5F5</color>
+    <color name="background_dark">#ECECEC</color>
+    <color name="nav_icon_color">#444</color>
+    <color name="nav_text_color">#333</color>
+    <color name="grey">#3c3c3c</color>
+
+    <!--Hamro patro ko colors -->
+
+    <color name="patro_orange">#fff44336</color>
+    <color name="patro_green">#ff009688</color>
+    <color name="patro_blue">#ff3f51b5</color>
+    <color name="patro_grey">#ff607d8b</color>
+    <color name="patro_yellow">#fff9b11c</color>
+
 </resources>
