@@ -2,19 +2,47 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@color/patro_grey"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     >
 
-    <ImageView
+    <LinearLayout
+        android:id="@+id/llProfile"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:weightSum="3">
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/higenic"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="40dp"
+            android:id="@+id/imgProfilePic"
+            />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/higenic"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="40dp"
-        />
+        <TextView
+            android:id="@+id/txtName"
+            android:text="User Name"
+            android:textColor="#00ff00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="18dp"
+            android:text="User Email"
+            android:textColor="#00ff00"/>
+
+
+    </LinearLayout>
+
+
 </RelativeLayout>

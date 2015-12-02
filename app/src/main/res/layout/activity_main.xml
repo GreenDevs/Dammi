@@ -23,11 +23,35 @@
                 android:id="@+id/app_bar"
                 layout="@layout/app_bar"/>
 
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btn_sign_in"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btn_sign_out"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_logout_from_google"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"/>
+
+            <Button
+                android:id="@+id/btn_revoke_access"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_revoke_access"
+                android:visibility="gone" />
+
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/homeRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
+
 
         </LinearLayout>
 
@@ -49,9 +73,12 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:itemIconTint="@color/colorPrimary"
-        app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu"
-        />
+        app:headerLayout="@layout/nav_header">
+
+    <include layout="@layout/nav_header"/>
+
+    </android.support.design.widget.NavigationView>
 
 
 </android.support.v4.widget.DrawerLayout>
