@@ -463,6 +463,10 @@ private void initGplaceVariables()
             mGoogleApiClient.connect();
             updateUI(false);
         }
+
+        txtName.setText("Name");
+        txtEmail.setText("Email");
+        imgProfilePic.setImageResource(R.drawable.higenic);
     }
 
     /**
@@ -495,7 +499,7 @@ private void initGplaceVariables()
             Intent intent = intentBuilder.build(this);
             // Start the intent by requesting a result,
             // identified by a request code.
-            startActivityForResult(intent, PLACE_PICKER_REQUEST);
+            startActivityForResult(intent,PLACE_PICKER_REQUEST);
 
         }
         catch (GooglePlayServicesRepairableException e)
