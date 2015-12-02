@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         >
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,6 +64,7 @@
             android:layout_gravity="bottom|right"/>
 
     </android.support.design.widget.CoordinatorLayout>
+
 
 
     <android.support.design.widget.NavigationView

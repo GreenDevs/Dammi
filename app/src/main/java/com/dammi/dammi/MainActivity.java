@@ -1,5 +1,6 @@
 package com.dammi.dammi;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -21,16 +22,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dammi.dammi.home.HomeAdapter;
 import com.dammi.dammi.search.SearchableActivity;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 import com.google.android.gms.common.api.ResultCallback;
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FloatingActionButton fab;
 
 
-    // google places api and google plus login related variables.
+    // google plus login related variables.
     private static final int RC_SIGN_IN = 0;
     // Logcat tag
     private static final String TAG = "MainActivity";
@@ -75,6 +78,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Button btnSignOut, btnRevokeAccess;
     private ImageView imgProfilePic;
     private TextView txtName, txtEmail;
+
+
+
+    // Google places api related variables.
+    private int PLACE_PICKER_REQUEST = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -197,8 +206,19 @@ private void initGplaceVariables()
     @Override
     public boolean onNavigationItemSelected(MenuItem item)
     {
-        startActivity(new Intent(context, SearchableActivity.class));
-        return true;
+        if(item.getItemId()==R.id.nav_item_10)
+        {
+           // Toast.makeText(context,"item ten selected!!",Toast.LENGTH_SHORT).show();
+            onItemTenButtonClicked();
+            return true;
+        }
+        else
+        {
+            startActivity(new Intent(context, SearchableActivity.class));
+            return true;
+        }
+
+
     }
 
 
@@ -220,13 +240,24 @@ private void initGplaceVariables()
                 mGoogleApiClient.connect();
             }
         }
+
+        if (requestCode == PLACE_PICKER_REQUEST
+                && responseCode == Activity.RESULT_OK)
+        {
+            //do nothing.
+        }
+        else
+        {
+            super.onActivityResult(requestCode, responseCode, intent);
+        }
+
     }
 
     @Override
     public void onConnected(Bundle bundle)
     {
         mSignInClicked = false;
-        Toast.makeText(this, "User is connected!", Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, "User is connected!", Toast.LENGTH_LONG).show();
 
         // Get user's information
         getProfileInformation();
@@ -353,7 +384,7 @@ private void initGplaceVariables()
                         .getCurrentPerson(mGoogleApiClient);
                 String personName = currentPerson.getDisplayName();
                 String personPhotoUrl = currentPerson.getImage().getUrl();
-                String personGooglePlusProfile = currentPerson.getUrl();
+                //String personGooglePlusProfile = currentPerson.getUrl();
                 String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
 
 //                Toast.makeText(context, "Name: " + personName + ", plusProfile: "
@@ -362,8 +393,6 @@ private void initGplaceVariables()
 
                 txtName.setText(personName);
                 txtEmail.setText(email);
-
-                Toast.makeText(context,txtName.getText().toString()+" "+txtEmail.getText().toString(), Toast.LENGTH_LONG).show();
 
                 // by default the profile url gives 50x50 px image only
                 // we can replace the value with whatever dimension we want by
@@ -445,17 +474,37 @@ private void initGplaceVariables()
         {
             Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
             Plus.AccountApi.revokeAccessAndDisconnect(mGoogleApiClient)
-                    .setResultCallback(new ResultCallback<Status>()
-                    {
+                    .setResultCallback(new ResultCallback<Status>() {
                         @Override
-                        public void onResult(Status arg0)
-                        {
+                        public void onResult(Status arg0) {
                             Log.e(TAG, "User access revoked!");
                             mGoogleApiClient.connect();
                             updateUI(false);
                         }
 
                     });
+        }
+    }
+
+    private void onItemTenButtonClicked()
+    {
+        try
+        {
+            PlacePicker.IntentBuilder intentBuilder =
+                    new PlacePicker.IntentBuilder();
+            Intent intent = intentBuilder.build(this);
+            // Start the intent by requesting a result,
+            // identified by a request code.
+            startActivityForResult(intent, PLACE_PICKER_REQUEST);
+
+        }
+        catch (GooglePlayServicesRepairableException e)
+        {
+            e.printStackTrace();
+        }
+        catch (GooglePlayServicesNotAvailableException e)
+        {
+            e.printStackTrace();
         }
     }
 }
