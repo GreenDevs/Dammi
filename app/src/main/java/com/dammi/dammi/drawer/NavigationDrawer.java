@@ -1,7 +1,6 @@
 package com.dammi.dammi.drawer;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -39,7 +38,7 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
     }
 
     public void setNavig(DrawerLayout drawerLayout, Toolbar toolbar) {
-        ActionBarDrawerToggle drawerToggle=new ActionBarDrawerToggle(getActivity(), drawerLayout,toolbar, R.string.drawer_open, R.string.drawer_closed);
+        ActionBarDrawerToggle drawerToggle=new ActionBarDrawerToggle(activity, drawerLayout,toolbar, R.string.drawer_open, R.string.drawer_closed);
         drawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
     }
