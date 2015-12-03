@@ -14,6 +14,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.dammi.dammi.drawer.NavigationDrawer;
 import com.dammi.dammi.home.HomeAdapter;
 import com.dammi.dammi.search.SearchableActivity;
 
@@ -22,9 +24,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Context context;
     private HomeAdapter homeAdapter;
     private Toolbar toolbar;
-    private NavigationView mDrawer;
     private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle drawerToggle;
     private FloatingActionButton fab;
 
     @Override
@@ -67,14 +67,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void setDrawer()
     {
-        mDrawer=(NavigationView)findViewById(R.id.main_drawer);
         drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
-
-        mDrawer.setNavigationItemSelectedListener(this);
-        drawerToggle=new ActionBarDrawerToggle(this,
-                drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_closed);
-        drawerLayout.setDrawerListener(drawerToggle);
-        drawerToggle.syncState();
+        NavigationDrawer drawer=(NavigationDrawer)getSupportFragmentManager().findFragmentById(R.id.drawer_fragment);
+        drawer.setNavig(drawerLayout, toolbar);
     }
 
 
@@ -87,12 +82,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onStop();
     }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
-        super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig);
-    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item)

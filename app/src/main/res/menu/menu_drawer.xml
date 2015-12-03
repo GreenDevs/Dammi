@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/first">
+        <item android:id="@+id/home"
+            android:icon="@drawable/ic_home_white_24dp"
+            android:title="@string/nav_title_1"/>
+
+        <item android:id="@+id/activities"
+            android:icon="@drawable/ic_motorcycle_white_24dp"
+            android:title="@string/nav_title_2"/>
+
+        <item android:id="@+id/hosts"
+            android:icon="@drawable/ic_face_white_24dp"
+            android:title="@string/nav_title_3"/>
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/second">
+
+        <item android:id="@+id/search"
+            android:icon="@drawable/ic_search_white_24dp"
+            android:title="@string/nav_title_4"/>
+
+        <item android:id="@+id/nearby"
+            android:icon="@drawable/ic_track_changes_white_24dp"
+            android:title="@string/nearby"/>
+
+        <item android:id="@+id/login"
+            android:icon="@drawable/ic_account_circle_white_24dp"
+            android:title="@string/nav_title_5"/>
+
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/third">
+
+        <item android:id="@+id/help"
+            android:icon="@drawable/ic_help_white_24dp"
+            android:title="@string/nav_title_6"/>
+
+        <item android:id="@+id/about"
+            android:icon="@drawable/ic_info_outline_white_24dp"
+            android:title="@string/nav_title_8"/>
+
+        <item android:id="@+id/preferences"
+            android:icon="@drawable/ic_settings_white_24dp"
+            android:title="@string/nav_title_7"/>
+
+    </group>
+
+</menu>

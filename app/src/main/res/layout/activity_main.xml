@@ -42,16 +42,12 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/main_drawer"
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:itemIconTint="@color/colorPrimary"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/drawer_menu"
-        />
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="com.dammi.dammi.drawer.NavigationDrawer"
+        android:id="@+id/drawer_fragment"
+        android:layout_gravity="start" />
 
 
 </android.support.v4.widget.DrawerLayout>

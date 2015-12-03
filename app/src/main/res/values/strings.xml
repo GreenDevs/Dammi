@@ -4,16 +4,15 @@
     <string name="drawer_closed">close</string>
 
     <!-- NAVIGATION DRAWER MENU -->
-    <string name="nav_title_1">one</string>
-    <string name="nav_title_2">two</string>
-    <string name="nav_title_3">three</string>
-    <string name="nav_title_4">four</string>
-    <string name="nav_title_5">five</string>
-    <string name="nav_title_6">six</string>
-    <string name="nav_title_7">seven</string>
-    <string name="nav_title_8">eight</string>
-    <string name="nav_title_9">nine</string>
-    <string name="nav_title_10">ten</string>
+    <string name="nav_title_1">Home</string>
+    <string name="nav_title_2">Activities</string>
+    <string name="nav_title_3">Hosts</string>
+    <string name="nav_title_4">Search</string>
+    <string name="nav_title_5">Login</string>
+    <string name="nav_title_6">Help</string>
+    <string name="nav_title_7">Preferences</string>
+    <string name="nav_title_8">About Us</string>
+
     <string name="search">search</string>
     <string name="search_hint">places, foods..</string>
 
@@ -23,6 +22,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="authority">com.dammi.dammi.search.MySuggestionProvider</string>
+    <string name="selection">\?</string>
+    <string name="nearby">nearby</string>
 
 
 </resources>
