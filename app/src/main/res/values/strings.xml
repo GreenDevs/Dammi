@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dammi</string>
+    <string name="app_name">Dammi Prototype</string>
     <string name="drawer_open">open</string>
     <string name="drawer_closed">close</string>
 
@@ -12,6 +12,7 @@
     <string name="nav_title_6">Help</string>
     <string name="nav_title_7">Preferences</string>
     <string name="nav_title_8">About Us</string>
+    <string name="nav_title_9">Logout</string>
 
     <string name="search">search</string>
     <string name="search_hint">places, foods..</string>
@@ -26,5 +27,8 @@
     <string name="selection">\?</string>
     <string name="nearby">nearby</string>
 
+    <!-- Google plus user credentials -->
+    <string name="user_name">User Name</string>
+    <string name="user_email">User Email</string>
 
 </resources>
