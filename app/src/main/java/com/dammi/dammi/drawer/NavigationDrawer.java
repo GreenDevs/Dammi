@@ -70,6 +70,8 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.navigation_drawer_fragment, container, false);
         navigView=(NavigationView)view.findViewById(R.id.main_drawer);
+
+        // Inflating nav_header layout on top of navigation drawer
         View temp=getActivity().getLayoutInflater().inflate(R.layout.nav_header,navigView,false);
         navigView.addHeaderView(temp);
         imgProfilePic= (ImageView) temp.findViewById(R.id.imgProfilePic);
@@ -84,6 +86,8 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
         super.onActivityCreated(savedInstanceState);
         activity=getActivity();
         navigView.setNavigationItemSelectedListener(this);
+
+        //Build Google api client
         initGplusApiClient();
     }
 
@@ -97,7 +101,6 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
 
     //google plus enabled login code
 
-    //Build GoogleApiClient
     private synchronized void initGplusApiClient()
     {
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
