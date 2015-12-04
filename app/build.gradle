@@ -38,4 +38,12 @@ dependencies {
     ///CIRCULAR IMAGE VIEW
     compile 'de.hdodenhof:circleimageview:1.2.1'
 
+    //google place api and login with google plus account.
+    compile 'com.google.android.gms:play-services:8.3.0'
+
+    // recycler view animator
+    compile 'jp.wasabeef:recyclerview-animators:1.2.0@aar'
+
+
+
 }
