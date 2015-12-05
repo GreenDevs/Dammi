@@ -71,7 +71,7 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
         View view= inflater.inflate(R.layout.navigation_drawer_fragment, container, false);
         navigView=(NavigationView)view.findViewById(R.id.main_drawer);
 
-        // Inflating nav_header layout on top of navigation drawer
+        // Inflating nav_header layout on top of navigation drawer layout
         View temp=getActivity().getLayoutInflater().inflate(R.layout.nav_header,navigView,false);
         navigView.addHeaderView(temp);
         imgProfilePic= (ImageView) temp.findViewById(R.id.imgProfilePic);
@@ -98,9 +98,7 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
     }
 
 
-
     //google plus enabled login code
-
     private synchronized void initGplusApiClient()
     {
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
@@ -161,6 +159,7 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
 
     }
 
+//    Called when items inside navigation drawer is clicked.
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -268,8 +267,7 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
             }
             else
             {
-                Toast.makeText(getActivity(),
-                        "Person information is null", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Person information is null", Toast.LENGTH_LONG).show();
             }
         }
         catch (Exception e)
