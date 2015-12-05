@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.dammi.dammi.R;
 
@@ -16,6 +17,7 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class ListActivity extends AppCompatActivity
 {
+
 
     private Menu menu;
     private boolean isListView;
@@ -32,8 +34,19 @@ public class ListActivity extends AppCompatActivity
 
     private  void init()
     {
+
         Toolbar toolbar=(Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.list_recycler);
         recyclerView.setHasFixedSize(true);
@@ -75,7 +88,7 @@ public class ListActivity extends AppCompatActivity
     }
 
     private void toggle() {
-        MenuItem item = menu.findItem(R.id.action_toggle);
+      MenuItem  item = menu.findItem(R.id.action_toggle);
         if (isListView) {
             mStaggeredGridLayoutManager.setSpanCount(2);
             item.setIcon(R.drawable.ic_action_list);
