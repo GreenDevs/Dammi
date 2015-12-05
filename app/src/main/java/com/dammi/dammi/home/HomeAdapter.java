@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
@@ -22,6 +24,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private final int SLIDE_SHOW=0, GRID_ITEMS=1;
     private LayoutInflater inflater;
     private SlideItemViewHolder slideHolder;
+
+    int[] imagesDrawables={R.drawable.australia,R.drawable.burren,R.drawable.colombo,R.drawable.geothermal,R.drawable.higenic};
+
     public HomeAdapter(Context context)
     {
         this.context=context;
@@ -29,10 +34,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         data=new ArrayList<>();
 
         data.add("SLIDE SHOW HERE");
-        data.add(new GridItem("FEATURED\nEXPERIENCES", R.drawable.geothermal));
+       // data.add(new GridItem("FEATURED\nEXPERIENCES", R.drawable.geothermal));
         data.add(new GridItem("DAMMI\nACTIVITIES", R.drawable.colombo));
         data.add(new GridItem("DAMMI\nHOSTS", R.drawable.burren));
-
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
@@ -58,6 +62,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     {
          int type=viewHolder.getItemViewType();
 
+
          switch (type)
          {
              case SLIDE_SHOW:
@@ -65,11 +70,13 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                  slideHolder=(SlideItemViewHolder)viewHolder;
                  TextSliderView textSliderView = new TextSliderView(context);
 
-                 textSliderView
-                         .description("Photo of the day.. Essor Kafley")
-                         .image(R.drawable.in_focus3);
-
-                 slideHolder.sliderShow.addSlider(textSliderView);
+                    for(int i=0;i<imagesDrawables.length;i++)
+                    {
+                        textSliderView
+                                .description("Experiences shared by.. Essorr Kafley")
+                                .image(imagesDrawables[i]);
+                        slideHolder.sliderShow.addSlider(textSliderView);
+                    }
 
                  break;
 
@@ -120,4 +127,6 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     {
         return slideHolder.sliderShow;
     }
+
+
 }
