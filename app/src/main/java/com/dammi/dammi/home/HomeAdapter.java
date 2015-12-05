@@ -25,8 +25,6 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private LayoutInflater inflater;
     private SlideItemViewHolder slideHolder;
 
-    int[] imagesDrawables={R.drawable.australia,R.drawable.burren,R.drawable.colombo,R.drawable.geothermal,R.drawable.higenic};
-
     public HomeAdapter(Context context)
     {
         this.context=context;
@@ -61,7 +59,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position)
     {
          int type=viewHolder.getItemViewType();
-
+        int[] imagesDrawables={R.drawable.australia,R.drawable.burren,R.drawable.colombo,R.drawable.geothermal,R.drawable.higenic};
 
          switch (type)
          {
@@ -73,7 +71,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     for(int i=0;i<imagesDrawables.length;i++)
                     {
                         textSliderView
-                                .description("Experiences shared by.. Essorr Kafley")
+                                .description("Experiences shared by.......... Essorr Kafley"+i)
                                 .image(imagesDrawables[i]);
                         slideHolder.sliderShow.addSlider(textSliderView);
                     }

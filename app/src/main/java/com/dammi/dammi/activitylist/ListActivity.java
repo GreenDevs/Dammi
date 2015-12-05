@@ -17,8 +17,6 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class ListActivity extends AppCompatActivity
 {
-
-
     private Menu menu;
     private boolean isListView;
     StaggeredGridLayoutManager mStaggeredGridLayoutManager;
@@ -27,8 +25,6 @@ public class ListActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        isListView = true;
-
         init();
     }
 
@@ -65,6 +61,7 @@ public class ListActivity extends AppCompatActivity
         recyclerView.setItemAnimator(new SlideInUpAnimator());
         recyclerView.setLayoutManager(mStaggeredGridLayoutManager);
         recyclerView.setAdapter(new ListAdapter(this));
+        isListView = false;
 
     }
 
