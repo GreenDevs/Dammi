@@ -15,7 +15,7 @@ import com.dammi.dammi.search.SearchableActivity;
 /**
  * Created by script on 11/25/15.
  */
-public class SlideItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
+public class SlideItemViewHolder extends RecyclerView.ViewHolder
 {
     SliderLayout sliderShow;
     private Context context;
@@ -24,8 +24,6 @@ public class SlideItemViewHolder extends RecyclerView.ViewHolder implements View
     {
         super(itemView);
         sliderShow=(SliderLayout)itemView.findViewById(R.id.home_slider);
-        textviewExperiences= (TextView) itemView.findViewById(R.id.slide_title);
-        textviewExperiences.setOnClickListener(this);
         context=itemView.getContext();
 
 
@@ -36,10 +34,4 @@ public class SlideItemViewHolder extends RecyclerView.ViewHolder implements View
         return sliderShow;
     }
 
-    @Override
-    public void onClick(View v) {
-
-        context.startActivity(new Intent(context, SearchableActivity.class));
-
-    }
 }

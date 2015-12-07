@@ -48,6 +48,7 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
     // google plus login related variables.
     private static final int RC_SIGN_IN = 0;
     private static final String TAG = "NavigationDrawer";
+    private DrawerLayout drawerLayout;
 
     // Profile pic image size in pixels
     private static final int PROFILE_PIC_SIZE = 400;
@@ -94,6 +95,7 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
         ActionBarDrawerToggle drawerToggle=new ActionBarDrawerToggle(activity, drawerLayout,toolbar, R.string.drawer_open, R.string.drawer_closed);
         drawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
+        this.drawerLayout=drawerLayout;
     }
 
 
@@ -166,8 +168,10 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
         switch (id) {
 
             case R.id.home:
-                if(!(activity instanceof MainActivity))
-                startActivity(new Intent(activity, MainActivity.class)); activity.finish();
+                if(!(activity instanceof MainActivity)) {
+                    activity.finish();
+                    startActivity(new Intent(activity, MainActivity.class));
+                }
 
                 break;
 
@@ -190,6 +194,8 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
                 startActivity(new Intent(activity, SearchableActivity.class));
                 return true;
         }
+
+        drawerLayout.closeDrawers();
         return true;
     }
 
