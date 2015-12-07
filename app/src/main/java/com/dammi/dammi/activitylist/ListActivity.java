@@ -1,6 +1,7 @@
 package com.dammi.dammi.activitylist;
 
 import android.content.res.Configuration;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -9,17 +10,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-
 import com.dammi.dammi.R;
-
+import com.dammi.dammi.drawer.NavigationDrawer;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class ListActivity extends AppCompatActivity
 {
     private Menu menu;
     private boolean isListView;
-    StaggeredGridLayoutManager mStaggeredGridLayoutManager;
+    private StaggeredGridLayoutManager mStaggeredGridLayoutManager;
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -31,18 +32,10 @@ public class ListActivity extends AppCompatActivity
     private  void init()
     {
 
-        Toolbar toolbar=(Toolbar)findViewById(R.id.app_bar);
+        toolbar=(Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        setDrawer();
 
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.list_recycler);
         recyclerView.setHasFixedSize(true);
@@ -64,6 +57,13 @@ public class ListActivity extends AppCompatActivity
         isListView = false;
 
     }
+
+    private void setDrawer() {
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        NavigationDrawer drawer = (NavigationDrawer) getSupportFragmentManager().findFragmentById(R.id.drawer_fragment);
+        drawer.setNavig(drawerLayout, toolbar);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

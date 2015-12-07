@@ -12,11 +12,11 @@ import com.dammi.dammi.R;
 /**
  * Created by trees on 12/4/15.
  */
-public class ContactUsFragment extends Fragment {
+public class ExpDetailsFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.contact_us, container, false);
+        return inflater.inflate(R.layout.about_hosts, container, false);
     }
 }

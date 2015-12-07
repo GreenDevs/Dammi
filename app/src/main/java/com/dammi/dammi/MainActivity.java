@@ -35,7 +35,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.plus.Plus;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
     private Context context;
     private HomeAdapter homeAdapter;
     private Toolbar toolbar;
@@ -94,14 +94,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             homeAdapter.getSliderLayout().stopAutoCycle();
         super.onStop();
     }
-
-
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        startActivity(new Intent(this, SearchableActivity.class));
-        return true;
-    }
-
 
 
 }

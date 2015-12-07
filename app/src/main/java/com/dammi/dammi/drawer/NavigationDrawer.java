@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dammi.dammi.MainActivity;
 import com.dammi.dammi.R;
 import com.dammi.dammi.search.SearchableActivity;
 import com.google.android.gms.common.ConnectionResult;
@@ -44,7 +46,6 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
     private Activity activity;
 
     // google plus login related variables.
-
     private static final int RC_SIGN_IN = 0;
     private static final String TAG = "NavigationDrawer";
 
@@ -99,7 +100,7 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
     //google plus enabled login code
     private synchronized void initGplusApiClient()
     {
-        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
+        mGoogleApiClient = new GoogleApiClient.Builder(activity)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this).addApi(Plus.API)
                 .addScope(Plus.SCOPE_PLUS_LOGIN)
@@ -163,6 +164,13 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
         int id = item.getItemId();
 
         switch (id) {
+
+            case R.id.home:
+                if(!(activity instanceof MainActivity))
+                startActivity(new Intent(activity, MainActivity.class)); activity.finish();
+
+                break;
+
             case R.id.login:
             //called when signIn Button is clicked
                 signInWithGPlus();
