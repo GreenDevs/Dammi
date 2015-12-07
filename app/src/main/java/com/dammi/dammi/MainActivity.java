@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private Context context;
     private HomeAdapter homeAdapter;
     private Toolbar toolbar;
-    private DrawerLayout drawerLayout;
-    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        //transparent status bar
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//        //transparent status bar
+//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         //FOR RECYCLER VIEW HOME
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.homeRecycler);
@@ -67,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         homeAdapter = new HomeAdapter(context);
         recyclerView.setAdapter(homeAdapter);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab_home);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_home);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setDrawer() {
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationDrawer drawer = (NavigationDrawer) getSupportFragmentManager().findFragmentById(R.id.drawer_fragment);
         drawer.setNavig(drawerLayout, toolbar);
     }
