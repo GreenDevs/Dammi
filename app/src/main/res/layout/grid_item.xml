@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="250dp"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_margin="@dimen/grid_margin"
+    card_view:cardElevation="7dp"
+    card_view:cardCornerRadius="12dp"
     >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
-    <ImageView
-        android:scaleType="centerCrop"
-        android:src="@drawable/nepali"
-        android:id="@+id/item_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+            <ImageView
+                android:scaleType="centerCrop"
+                android:src="@drawable/nepali"
+                android:id="@+id/item_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
 
-    <TextView
-        android:id="@+id/item_title"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:layout_margin="30dp"
-        android:layout_centerVertical="true"
-        android:text="Dammi \nAdaventures"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/item_title"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                android:layout_margin="30dp"
+                android:layout_centerVertical="true"
+                android:text="Dammi \nAdaventures"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-    <!--<TextView
-        android:id="@+id/item_arrow"
-        android:textSize="55sp"
-        android:textStyle="bold"
-        android:layout_margin="30dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:text="@string/arrow_home"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" /> -->
-</RelativeLayout>
+            <!--<TextView
+                android:id="@+id/item_arrow"
+                android:textSize="55sp"
+                android:textStyle="bold"
+                android:layout_margin="30dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/arrow_home"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" /> -->
+        </RelativeLayout>
+</android.support.v7.widget.CardView>

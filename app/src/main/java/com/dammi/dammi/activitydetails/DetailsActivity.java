@@ -8,10 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.dammi.dammi.R;
-import com.dammi.dammi.activitydetails.fragments.AboutHostFragment;
-import com.dammi.dammi.activitydetails.fragments.AboutTourFragment;
-import com.dammi.dammi.activitydetails.fragments.ContactUsFragment;
+import com.dammi.dammi.activitydetails.fragments.ExpDetailsFragment;
+import com.dammi.dammi.activitydetails.fragments.ExperienceFragment;
 import com.dammi.dammi.activitydetails.fragments.RateReviewFragment;
+import com.dammi.dammi.activitydetails.fragments.AboutUsFragment;
 import com.dammi.dammi.activitydetails.fragments.ViewPagerAdapter;
 
 public class DetailsActivity extends AppCompatActivity
@@ -49,10 +49,10 @@ public class DetailsActivity extends AppCompatActivity
     private void setViewPager(){
 
         ViewPagerAdapter adapter=new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AboutTourFragment(), "ABOUT TOUR");
-        adapter.addFragment(new AboutHostFragment(), "ABOUT HOST");
-        adapter.addFragment(new RateReviewFragment(), "REVIEWS");
-        adapter.addFragment(new ContactUsFragment(), "CONTACT US");
+        adapter.addFragment(new ExperienceFragment(), "ABOUT EXPERIENCE");
+        adapter.addFragment(new ExpDetailsFragment(), "EXPERIENCE DETAILS");
+        adapter.addFragment(new AboutUsFragment(), "ABOUT HOSTS");
+        adapter.addFragment(new RateReviewFragment(), "RATE AND REVIEW");
         viewPager.setAdapter(adapter);
     }
 

@@ -24,8 +24,6 @@ public class SlideItemViewHolder extends RecyclerView.ViewHolder implements View
     {
         super(itemView);
         sliderShow=(SliderLayout)itemView.findViewById(R.id.home_slider);
-        textviewExperiences= (TextView) itemView.findViewById(R.id.slide_title);
-        textviewExperiences.setOnClickListener(this);
         context=itemView.getContext();
         sliderShow.setOnClickListener(this);
 
@@ -36,6 +34,7 @@ public class SlideItemViewHolder extends RecyclerView.ViewHolder implements View
     {
         return sliderShow;
     }
+
 
     @Override
     public void onClick(View v) {
@@ -49,4 +48,5 @@ public class SlideItemViewHolder extends RecyclerView.ViewHolder implements View
        // context.startActivity(new Intent(context, SearchableActivity.class));
 
     }
+
 }

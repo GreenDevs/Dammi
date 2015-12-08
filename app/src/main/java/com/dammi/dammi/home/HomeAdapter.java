@@ -61,7 +61,6 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     {
          int type=viewHolder.getItemViewType();
 
-
          switch (type)
          {
              case SLIDE_SHOW:
@@ -77,6 +76,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
                         final int finalI = i;
                         textSliderView
+
                                 .description("Experiences shared by.. Essorr Kafley")
                                 .image(imagesDrawables[i])
                                 .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
