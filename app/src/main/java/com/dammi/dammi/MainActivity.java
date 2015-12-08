@@ -23,7 +23,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.dammi.dammi.Volley.CacheRequest;
+import com.dammi.dammi.Volley.VolleySingleton;
 import com.dammi.dammi.drawer.NavigationDrawer;
 import com.dammi.dammi.home.HomeAdapter;
 import com.dammi.dammi.search.SearchableActivity;
@@ -35,10 +44,17 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.plus.Plus;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+
 public class MainActivity extends AppCompatActivity {
     private Context context;
     private HomeAdapter homeAdapter;
     private Toolbar toolbar;
+
+    private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +62,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = this;
         init();
+
+
+        VolleySingleton singleton= VolleySingleton.getInstance();
+        requestQueue=singleton.getQueue();
+
+        sendNewsRequest();
+
+
     }
 
 
@@ -91,6 +115,50 @@ public class MainActivity extends AppCompatActivity {
             homeAdapter.getSliderLayout().stopAutoCycle();
         super.onStop();
     }
+
+
+
+    private void sendNewsRequest()
+    {
+
+        final String URL="http://www.goalnepal.com/json_news_2015.php?page=1";
+
+        CacheRequest newsRequest=new CacheRequest(Request.Method.GET, URL,
+
+                new Response.Listener<NetworkResponse>()
+                {
+                    @Override
+                    public void onResponse(NetworkResponse response)
+                    {
+                        try
+                        {
+                            final String jsonResponseString=new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+                            JSONObject responseJson=new JSONObject(jsonResponseString);
+
+                            Toast.makeText(context, ""+responseJson.toString(), Toast.LENGTH_SHORT).show();
+
+                        }
+                        catch (UnsupportedEncodingException | JSONException e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                ,
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        Toast.makeText(context, "Parse Exception", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+        newsRequest.setTag(this);
+        requestQueue.add(newsRequest);
+    }
+
 
 
 }

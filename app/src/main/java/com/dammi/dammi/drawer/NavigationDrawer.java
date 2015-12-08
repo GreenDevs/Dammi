@@ -27,6 +27,7 @@ import com.dammi.dammi.MainActivity;
 import com.dammi.dammi.R;
 import com.dammi.dammi.about.AboutActivity;
 import com.dammi.dammi.activitylist.ListActivity;
+import com.dammi.dammi.help.HelpActivity;
 import com.dammi.dammi.hosts.HostActivity;
 import com.dammi.dammi.search.SearchableActivity;
 import com.google.android.gms.common.ConnectionResult;
@@ -207,6 +208,11 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
             case R.id.about:
                 startActivity(new Intent(activity, AboutActivity.class));
                 break;
+
+            case R.id.help:
+                startActivity(new Intent(activity, HelpActivity.class));
+                break;
+
 
             default:
                 break;
