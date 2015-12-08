@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.dammi.dammi.R;
 
@@ -59,21 +60,35 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position)
     {
          int type=viewHolder.getItemViewType();
-        int[] imagesDrawables={R.drawable.australia,R.drawable.burren,R.drawable.colombo,R.drawable.geothermal,R.drawable.higenic};
 
          switch (type)
          {
              case SLIDE_SHOW:
+                int[] imagesDrawables={R.drawable.australia,R.drawable.burren,R.drawable.colombo,R.drawable.geothermal,R.drawable.higenic};
+                 final String[] names = {"australia","burren","colombo","geothermal","higenic"};
 
-                 slideHolder=(SlideItemViewHolder)viewHolder;
-                 TextSliderView textSliderView = new TextSliderView(context);
 
                     for(int i=0;i<imagesDrawables.length;i++)
                     {
+                        slideHolder=(SlideItemViewHolder)viewHolder;
+                        TextSliderView textSliderView = new TextSliderView(context);
+
+
+                        final int finalI = i;
                         textSliderView
-                                .description("Experiences shared by.......... Essorr Kafley"+i)
-                                .image(imagesDrawables[i]);
+
+                                .description("Experiences shared by.. Essorr Kafley")
+                                .image(imagesDrawables[i])
+                                .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                                    @Override
+                                    public void onSliderClick(BaseSliderView slider) {
+                                        Toast.makeText(context,"loc:"+names[finalI],Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
                         slideHolder.sliderShow.addSlider(textSliderView);
+
+
                     }
 
                  break;
