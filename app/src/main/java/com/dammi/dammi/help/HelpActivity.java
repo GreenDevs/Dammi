@@ -146,7 +146,6 @@ public class HelpActivity  extends AppCompatActivity
 
             }
         });
-
     }
 
 

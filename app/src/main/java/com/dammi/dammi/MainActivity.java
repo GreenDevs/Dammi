@@ -2,8 +2,10 @@ package com.dammi.dammi;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -34,6 +36,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.dammi.dammi.Volley.CacheRequest;
 import com.dammi.dammi.Volley.VolleySingleton;
 import com.dammi.dammi.drawer.NavigationDrawer;
+import com.dammi.dammi.help.HelpActivity;
 import com.dammi.dammi.home.HomeAdapter;
 import com.dammi.dammi.search.SearchableActivity;
 import com.google.android.gms.common.ConnectionResult;
@@ -49,7 +52,8 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
     private Context context;
     private HomeAdapter homeAdapter;
     private Toolbar toolbar;
@@ -57,9 +61,14 @@ public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        appIntro();
+
+
         context = this;
         init();
 
@@ -158,6 +167,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    private void appIntro()
+    {
+        Thread thread = new Thread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                //  Initialize SharedPreferences
+                SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+                //  Create a new boolean and preference and set it to true
+                boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
+
+                //  If the activity has never started before...
+                if (isFirstStart)
+                {
+
+                    //  Launch app intro
+                    Intent i = new Intent(MainActivity.this, HelpActivity.class);
+                    startActivity(i);
+
+                    //  Make a new preferences editor
+                    SharedPreferences.Editor e = getPrefs.edit();
+
+                    //  Edit preference to make it false because we don't want this to run again
+                    e.putBoolean("firstStart", false);
+
+                    //  Apply changes
+                    e.apply();
+                }
+            }
+        });
+
+        // Start the thread
+        thread.start();
+    }
 
 }
 
