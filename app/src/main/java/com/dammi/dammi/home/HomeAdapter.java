@@ -74,6 +74,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         slideHolder=(SlideItemViewHolder)viewHolder;
                         TextSliderView textSliderView = new TextSliderView(context);
 
+
                         final int finalI = i;
                         textSliderView
                                 .description("Experiences shared by.. Essorr Kafley")
