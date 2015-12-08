@@ -27,6 +27,7 @@ public class SlideItemViewHolder extends RecyclerView.ViewHolder implements View
         textviewExperiences= (TextView) itemView.findViewById(R.id.slide_title);
         textviewExperiences.setOnClickListener(this);
         context=itemView.getContext();
+        sliderShow.setOnClickListener(this);
 
 
     }
@@ -39,7 +40,13 @@ public class SlideItemViewHolder extends RecyclerView.ViewHolder implements View
     @Override
     public void onClick(View v) {
 
-        context.startActivity(new Intent(context, SearchableActivity.class));
+        switch (v.getId())
+        {
+            case R.id.home_slider:
+                Toast.makeText(context,"mouse",Toast.LENGTH_SHORT).show();
+        }
+
+       // context.startActivity(new Intent(context, SearchableActivity.class));
 
     }
 }
