@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     private void init() {
         //FOR TOOL BAR
         toolbar = (Toolbar) findViewById(R.id.app_bar);
