@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dammi.dammi.MainActivity;
 import com.dammi.dammi.R;
 import com.dammi.dammi.search.SearchableActivity;
 import com.google.android.gms.common.ConnectionResult;
@@ -44,9 +46,9 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
     private Activity activity;
 
     // google plus login related variables.
-
     private static final int RC_SIGN_IN = 0;
     private static final String TAG = "NavigationDrawer";
+    private DrawerLayout drawerLayout;
 
     // Profile pic image size in pixels
     private static final int PROFILE_PIC_SIZE = 400;
@@ -93,13 +95,14 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
         ActionBarDrawerToggle drawerToggle=new ActionBarDrawerToggle(activity, drawerLayout,toolbar, R.string.drawer_open, R.string.drawer_closed);
         drawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
+        this.drawerLayout=drawerLayout;
     }
 
 
     //google plus enabled login code
     private synchronized void initGplusApiClient()
     {
-        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
+        mGoogleApiClient = new GoogleApiClient.Builder(activity)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this).addApi(Plus.API)
                 .addScope(Plus.SCOPE_PLUS_LOGIN)
@@ -163,6 +166,15 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
         int id = item.getItemId();
 
         switch (id) {
+
+            case R.id.home:
+                if(!(activity instanceof MainActivity)) {
+                    activity.finish();
+                    startActivity(new Intent(activity, MainActivity.class));
+                }
+
+                break;
+
             case R.id.login:
             //called when signIn Button is clicked
                 signInWithGPlus();
@@ -182,6 +194,8 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
                 startActivity(new Intent(activity, SearchableActivity.class));
                 return true;
         }
+
+        drawerLayout.closeDrawers();
         return true;
     }
 
@@ -216,11 +230,7 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
             Intent intent = intentBuilder.build(activity);
             startActivityForResult(intent,PLACE_PICKER_REQUEST);
         }
-        catch (GooglePlayServicesRepairableException e)
-        {
-            e.printStackTrace();
-        }
-        catch (GooglePlayServicesNotAvailableException e)
+        catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e)
         {
             e.printStackTrace();
         }

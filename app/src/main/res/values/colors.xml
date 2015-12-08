@@ -19,5 +19,6 @@
     <color name="patro_blue">#ff3f51b5</color>
     <color name="patro_grey">#ff607d8b</color>
     <color name="patro_yellow">#fff9b11c</color>
+    <color name="black">#000</color>
 
 </resources>

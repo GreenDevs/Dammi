@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dammi Prototype</string>
+    <string name="app_name">Dammi</string>
     <string name="drawer_open">open</string>
     <string name="drawer_closed">close</string>
 
@@ -30,5 +30,15 @@
     <!-- Google plus user credentials -->
     <string name="user_name">User Name</string>
     <string name="user_email">User Email</string>
+    <string name="overview">OVERVIEW:</string>
+
+    <!-- OVERVIEWS -->
+    <string name="overview_details">
+         -Experience a hands-on, practical lesson with a local on how to cook like a Nepali!\n
+        -Tour the bazaars in Kathmandu to source fresh ingredients.\n
+        -Cook the most popular Nepali delicacies like Momo, Dal Bhat and Paratha.\n
+        -Have a lunch with prepared food at a local house and create life-long memories!\n
+    </string>
+    <string name="home_list_title">Categories</string>
 
 </resources>
