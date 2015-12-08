@@ -1,10 +1,8 @@
 package com.dammi.dammi.home;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -47,11 +45,11 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
             case GRID_ITEMS:
-                return new GridItemViewHolder(inflater.inflate(R.layout.grid_item, parent, false));
+                return new GridItemViewHolder(inflater.inflate(R.layout.home_item, parent, false));
 
 
             default:
-                return new GridItemViewHolder(inflater.inflate(R.layout.grid_item, parent, false));
+                return new GridItemViewHolder(inflater.inflate(R.layout.home_item, parent, false));
 
         }
     }
@@ -66,6 +64,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
              case SLIDE_SHOW:
                 int[] imagesDrawables={R.drawable.australia,R.drawable.burren,R.drawable.colombo,R.drawable.geothermal,R.drawable.higenic};
                  final String[] names = {"australia","burren","colombo","geothermal","higenic"};
+                 final String[] snacks = {"enjoy australia","burren welcomes you","colombo is wicked","geothermal is hot ","higenic sucks"};
 
 
                     for(int i=0;i<imagesDrawables.length;i++)
@@ -77,7 +76,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         final int finalI = i;
                         textSliderView
 
-                                .description("Experiences shared by.. Essorr Kafley")
+                                .description("Experiences:"+snacks[i])
                                 .image(imagesDrawables[i])
                                 .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
                                     @Override
@@ -87,7 +86,6 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                                 });
 
                         slideHolder.sliderShow.addSlider(textSliderView);
-
 
                     }
 

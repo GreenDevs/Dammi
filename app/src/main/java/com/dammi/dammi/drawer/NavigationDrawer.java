@@ -25,6 +25,9 @@ import android.widget.Toast;
 
 import com.dammi.dammi.MainActivity;
 import com.dammi.dammi.R;
+import com.dammi.dammi.about.AboutActivity;
+import com.dammi.dammi.activitylist.ListActivity;
+import com.dammi.dammi.hosts.HostActivity;
 import com.dammi.dammi.search.SearchableActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -170,7 +173,6 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
             case R.id.home:
                 if(!(activity instanceof MainActivity)) {
                     activity.finish();
-                    startActivity(new Intent(activity, MainActivity.class));
                 }
 
                 break;
@@ -180,19 +182,34 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
                 signInWithGPlus();
                 break;
 
-            case R.id.logout:
-                //called when sign out button is clicked
-                signOutWithGPlus();
-                break;
+//            case R.id.logout:
+//                //called when sign out button is clicked
+//                signOutWithGPlus();
+//                break;
 
             case R.id.nearby:
                 //called when Nearby button is clicked
                 showNearByPlaces();
                 break;
 
-            default:
+            case R.id.activities:
+                startActivity(new Intent(activity, ListActivity.class));
+                break;
+
+            case R.id.hosts:
+                startActivity(new Intent(activity, HostActivity.class));
+                break;
+
+            case R.id.search:
                 startActivity(new Intent(activity, SearchableActivity.class));
-                return true;
+                break;
+
+            case R.id.about:
+                startActivity(new Intent(activity, AboutActivity.class));
+                break;
+
+            default:
+                break;
         }
 
         drawerLayout.closeDrawers();

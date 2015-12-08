@@ -20,5 +20,7 @@
     <color name="patro_grey">#ff607d8b</color>
     <color name="patro_yellow">#fff9b11c</color>
     <color name="black">#000</color>
+    <color name="facebook_code">#d32f2f</color>
+    <color name="main_activity_bg">#E1EEFF</color>
 
 </resources>

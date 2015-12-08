@@ -6,9 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dammi.dammi.R;
 import com.dammi.dammi.activitylist.ListActivity;
+import com.dammi.dammi.hosts.HostActivity;
 
 /**
  * Created by script on 11/25/15.
@@ -33,7 +35,17 @@ public class GridItemViewHolder extends RecyclerView.ViewHolder implements View.
     @Override
     public void onClick(View v)
     {
-        context.startActivity(new Intent(context, ListActivity.class));
+        switch (getAdapterPosition())
+        {
+            case 2:
+                context.startActivity(new Intent(context, HostActivity.class));
+                break;
+
+            case 1:
+                context.startActivity(new Intent(context, ListActivity.class));
+                break;
+        }
+
 
     }
 }
