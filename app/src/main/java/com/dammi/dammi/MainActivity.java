@@ -63,13 +63,11 @@ public class MainActivity extends AppCompatActivity {
         context = this;
         init();
 
-
         VolleySingleton singleton= VolleySingleton.getInstance();
         requestQueue=singleton.getQueue();
 
-        sendNewsRequest();
-
-
+       // sendNewsRequest();
+        
     }
 
 
