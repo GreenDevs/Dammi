@@ -42,19 +42,24 @@
             </intent-filter>
         </activity>
         <activity android:name=".activitylist.ListActivity" />
+
         <activity android:name=".activitydetails.DetailsActivity" />
 
-        <!-- meta data tag for google place api -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBee3LTuxQAg6l29sJVQamxGVwzdJfYdLg" />
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            <!-- meta data tag for google place api -->
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyBee3LTuxQAg6l29sJVQamxGVwzdJfYdLg" />
+            <meta-data
+                android:name="com.google.android.gms.version"
+                android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".hosts.HostActivity" />
-        <activity android:name=".about.AboutActivity" />
-        <activity android:name=".help.HelpActivity"></activity>
+            <activity android:name=".hosts.HostActivity" />
+            <activity android:name=".about.AboutActivity" />
+            <activity android:name=".help.HelpActivity">
+
+        </activity>
+
+        <activity android:name=".activitydetails.MyWebView"/>
     </application>
 
 </manifest>
