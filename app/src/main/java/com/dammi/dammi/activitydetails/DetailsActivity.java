@@ -51,7 +51,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     private static final String URL="http://dammitravels.netai.net/?table=activity_main&&a_id=";
     private static final String AVERAGE_RATING="rating_avg";
-    private static final String TITLE="title";
+    public static final String TITLE="title";
     private static final String COVER_PIC="cover_pic";
     private static final String AVILABLE="avilable";
 
@@ -66,7 +66,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private DetailsActivity context;
     private RequestQueue requestQueue;
     public static int act_id;
+    public static String title;
     public static final String ACT_ID_TAG="activity_id";
+    public static final String BUNLDE_TAG="bundle_tag";
 
 
     @Override
@@ -76,7 +78,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         context = this;
 
 
-        act_id=getIntent().getIntExtra(ACT_ID_TAG, 0);
+        Bundle bundle=getIntent().getBundleExtra(BUNLDE_TAG);
+        act_id=bundle.getInt(ACT_ID_TAG, 0);
+        title=bundle.getString(TITLE,"Dammi");
 
         requestQueue= VolleySingleton.getInstance().getQueue();
         init();
@@ -89,6 +93,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private void init() {
 
         toolbar = (Toolbar) findViewById(R.id.mToolbar);
+        toolbar.setTitle(title);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null)
@@ -279,8 +284,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
             try {
                 String imageUrl= MyApplication.HOME_URL+"/"+jsonObject.getString(COVER_PIC);
-                String title=jsonObject.getString(TITLE);
-                toolbar.setTitle(title);
                 setCoverPic(imageUrl);
             } catch (JSONException e) {
                 e.printStackTrace();

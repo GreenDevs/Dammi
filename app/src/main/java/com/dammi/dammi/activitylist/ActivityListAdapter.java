@@ -2,6 +2,7 @@ package com.dammi.dammi.activitylist;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -108,7 +109,10 @@ public class ActivityListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             ActivityItem item=data.get(getAdapterPosition());
             Intent intent=new Intent(context, DetailsActivity.class);
-            intent.putExtra(DetailsActivity.ACT_ID_TAG, item.actId);
+            Bundle bunlde=new Bundle();
+            bunlde.putInt(DetailsActivity.ACT_ID_TAG, item.actId);
+            bunlde.putString(DetailsActivity.TITLE, item.title);
+            intent.putExtra(DetailsActivity.BUNLDE_TAG, bunlde);
             context.startActivity(intent);
         }
     }
