@@ -29,6 +29,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.ImageLoader;
 import com.dammi.dammi.R;
 import com.dammi.dammi.Volley.CacheRequest;
+import com.dammi.dammi.Volley.MyApplication;
 import com.dammi.dammi.Volley.VolleySingleton;
 import com.dammi.dammi.activitydetails.fragments.ExpDetailsFragment;
 import com.dammi.dammi.activitydetails.fragments.ExperienceFragment;
@@ -277,7 +278,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         if(jsonObject!=null){
 
             try {
-                String imageUrl=jsonObject.getString(COVER_PIC);
+                String imageUrl= MyApplication.HOME_URL+"/"+jsonObject.getString(COVER_PIC);
                 String title=jsonObject.getString(TITLE);
                 toolbar.setTitle(title);
                 setCoverPic(imageUrl);
@@ -297,7 +298,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                coverPic.setImageResource(R.drawable.top_logo);
+//                coverPic.setImageResource(R.drawable.o);
             }
         });
     }
