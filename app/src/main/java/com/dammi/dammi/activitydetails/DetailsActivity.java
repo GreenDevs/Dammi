@@ -247,6 +247,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                         {
                             final String jsonResponseString=new String(response.data, HttpHeaderParser.parseCharset(response.headers));
                             JSONObject jsonObject=new JSONObject(jsonResponseString);
+                            parseSetValues(jsonObject);
 
                         }
                         catch (UnsupportedEncodingException | JSONException e)
