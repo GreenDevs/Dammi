@@ -169,7 +169,7 @@ public class ListActivity extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
-                        Toast.makeText(context, "Parse Exception", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
@@ -197,7 +197,6 @@ public class ListActivity extends AppCompatActivity
                         priceTag=jsonItem.getString(CURRENCY)+jsonItem.getString(COSTS);
                         imageUrl= MyApplication.HOME_URL+jsonItem.getString(COVER_PIC).replace("\\","");
                         tmp.add(new ActivityItem(title, location, hostName, duration, priceTag, actId, imageUrl));
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

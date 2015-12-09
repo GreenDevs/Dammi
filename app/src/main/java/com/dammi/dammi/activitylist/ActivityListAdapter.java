@@ -49,6 +49,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position)
     {
+
         final MyViewHolder holder=(MyViewHolder)viewHolder;
         ActivityItem item=data.get(position);
 
@@ -60,7 +61,6 @@ public class ActivityListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         ImageLoader loader= VolleySingleton.getInstance().getmImageLoader();
 
-        Log.i("IMAGE URL", item.imageUrl);
         loader.get(item.imageUrl, new ImageLoader.ImageListener() {
             @Override
             public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
@@ -106,12 +106,11 @@ public class ActivityListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         @Override
         public void onClick(View v) {
 
-            context.startActivity(new Intent(context, DetailsActivity.class));
+            ActivityItem item=data.get(getAdapterPosition());
+            Intent intent=new Intent(context, DetailsActivity.class);
+            intent.putExtra(DetailsActivity.ACT_ID_TAG, item.actId);
+            context.startActivity(intent);
         }
     }
-
-
-
-
 
 }

@@ -17,23 +17,55 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.ImageLoader;
 import com.dammi.dammi.R;
+import com.dammi.dammi.Volley.CacheRequest;
+import com.dammi.dammi.Volley.VolleySingleton;
 import com.dammi.dammi.activitydetails.fragments.ExpDetailsFragment;
 import com.dammi.dammi.activitydetails.fragments.ExperienceFragment;
 import com.dammi.dammi.activitydetails.fragments.RateReviewFragment;
 import com.dammi.dammi.activitydetails.fragments.AboutUsFragment;
 import com.dammi.dammi.activitydetails.fragments.ViewPagerAdapter;
+import com.dammi.dammi.activitylist.ActivityItem;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //API PARTS
+
+    private static final String URL="http://dammitravels.netai.net/?table=activity_main&&a_id=";
+    private static final String AVERAGE_RATING="rating_avg";
+    private static final String TITLE="title";
+    private static final String COVER_PIC="cover_pic";
+    private static final String AVILABLE="avilable";
+
     private ViewPager viewPager;
     private TabLayout tabLayout;
-
     private Boolean isFabOpen = false;
     private FloatingActionButton fab, fab1, fab2;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward;
+    private ImageView coverPic;
+    private Toolbar toolbar;
+
     private DetailsActivity context;
+    private RequestQueue requestQueue;
+    public static int act_id;
+    public static final String ACT_ID_TAG="activity_id";
 
 
     @Override
@@ -41,15 +73,21 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         context = this;
+
+
+        act_id=getIntent().getIntExtra(ACT_ID_TAG, 0);
+
+        requestQueue= VolleySingleton.getInstance().getQueue();
         init();
         initFab();
+        requestData();
 
 
     }
 
     private void init() {
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.mToolbar);
+        toolbar = (Toolbar) findViewById(R.id.mToolbar);
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null)
@@ -63,6 +101,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         if (tabLayout != null)
             setTabLayout();
+
+        coverPic=(ImageView)findViewById(R.id.cover_pic);
     }
 
     private void initFab() {
@@ -188,8 +228,77 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             }
             startActivity(callIntent);
         } catch (ActivityNotFoundException activityException) {
-            Log.e("helloandroid dialing example", "Call failed"+activityException);
+
         }
+    }
+
+
+    ///####################### PARSE JSON
+    private void requestData(){
+
+        CacheRequest cacheRequest=new CacheRequest(Request.Method.GET, URL+act_id,
+
+                new Response.Listener<NetworkResponse>()
+                {
+                    @Override
+                    public void onResponse(NetworkResponse response)
+                    {
+                        try
+                        {
+                            final String jsonResponseString=new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+                            JSONObject jsonObject=new JSONObject(jsonResponseString);
+
+                        }
+                        catch (UnsupportedEncodingException | JSONException e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                ,
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                    }
+                });
+
+        cacheRequest.setTag(this);
+        requestQueue.add(cacheRequest);
+
+    }
+
+
+    //PARSE AND SET THE JSON VALUES
+
+    private void parseSetValues(JSONObject jsonObject){
+        if(jsonObject!=null){
+
+            try {
+                String imageUrl=jsonObject.getString(COVER_PIC);
+                String title=jsonObject.getString(TITLE);
+                toolbar.setTitle(title);
+                setCoverPic(imageUrl);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void setCoverPic(String url){
+        ImageLoader loader=VolleySingleton.getInstance().getmImageLoader();
+        loader.get(url, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                coverPic.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                coverPic.setImageResource(R.drawable.top_logo);
+            }
+        });
     }
 
 }
