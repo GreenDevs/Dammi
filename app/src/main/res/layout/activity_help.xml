@@ -2,9 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <!-- Top Sliding Banners -->
+    android:orientation="vertical"
+    android:background="#000">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,10 +22,11 @@
             android:layout_centerHorizontal="true"
             android:gravity="bottom"
             app:centered="true"
-            app:fillColor="#ff0099"
-            app:pageColor="#FF0000"
+            app:fillColor="@color/patro_yellow"
+            app:pageColor="@color/white"
             app:snap="false"
             android:paddingBottom="20dp"
+            android:layout_margin="2dp"
             />
 
 
@@ -37,7 +37,7 @@
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Done"
+            android:text="Skip"
             android:textSize="20sp"
             android:gravity="center"
             android:id="@+id/txt_done"
@@ -53,12 +53,11 @@
             android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Skip"
+            android:text="Next"
             android:textSize="20sp"
             android:gravity="center"
             android:id="@+id/txt_skip"
             />
-
 
     </RelativeLayout>
 

@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/banner_img"
-            android:src="@drawable/dami"/>
+            android:src="@drawable/logo"/>
 
         <!-- Banner Text -TGIF (Large) -->
         <TextView

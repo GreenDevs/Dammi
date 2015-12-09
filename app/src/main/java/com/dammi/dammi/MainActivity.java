@@ -65,25 +65,21 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         appIntro();
-
-
         context = this;
         init();
-
         VolleySingleton singleton= VolleySingleton.getInstance();
         requestQueue=singleton.getQueue();
-
        // sendNewsRequest();
-        
     }
 
 
-    private void init() {
+    private void init()
+    {
         //FOR TOOL BAR
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+        toolbar.setLogo(R.drawable.logo);
 
 //        //transparent status bar
 //        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -96,9 +92,11 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setAdapter(homeAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_home);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent intent = new Intent(context, SearchableActivity.class);
                 startActivity(intent);
             }
@@ -108,7 +106,8 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private void setDrawer() {
+    private void setDrawer()
+    {
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationDrawer drawer = (NavigationDrawer) getSupportFragmentManager().findFragmentById(R.id.drawer_fragment);
         drawer.setNavig(drawerLayout, toolbar);
@@ -116,7 +115,8 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    protected void onStop() {
+    protected void onStop()
+    {
         ///THIS METHOD IS FOR CLEANING MEMORY OBTAINED FORM HOME SLIDE SHOW
         if (homeAdapter.getSliderLayout() != null)
             homeAdapter.getSliderLayout().stopAutoCycle();
@@ -161,7 +161,6 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
-
         newsRequest.setTag(this);
         requestQueue.add(newsRequest);
     }
@@ -175,27 +174,15 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void run()
             {
-                //  Initialize SharedPreferences
                 SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
-                //  Create a new boolean and preference and set it to true
                 boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
-
-                //  If the activity has never started before...
                 if (isFirstStart)
                 {
-
-                    //  Launch app intro
                     Intent i = new Intent(MainActivity.this, HelpActivity.class);
                     startActivity(i);
-
-                    //  Make a new preferences editor
                     SharedPreferences.Editor e = getPrefs.edit();
-
-                    //  Edit preference to make it false because we don't want this to run again
                     e.putBoolean("firstStart", false);
-
-                    //  Apply changes
                     e.apply();
                 }
             }

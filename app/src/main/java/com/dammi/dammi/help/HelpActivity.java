@@ -1,5 +1,6 @@
 package com.dammi.dammi.help;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class HelpActivity  extends AppCompatActivity
+public class HelpActivity  extends AppCompatActivity implements View.OnClickListener
 {
     private static ViewPager mPager;
     private static int currentPage = 0;
@@ -30,6 +31,7 @@ public class HelpActivity  extends AppCompatActivity
     private ArrayList<Integer> ImagesArray = new ArrayList<Integer>();
 
     TextView tvSkip,tvDone;
+    private HelpActivity context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,54 +44,30 @@ public class HelpActivity  extends AppCompatActivity
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
 
-
         setContentView(R.layout.activity_help);
+        this.context = this;
         init();
     }
+
+
+
     private void init()
     {
         for(int i=0;i<IMAGES.length;i++)
             ImagesArray.add(IMAGES[i]);
 
         mPager = (ViewPager) findViewById(R.id.pager);
-
-
         mPager.setAdapter(new SlidingImage_Adapter(HelpActivity.this, ImagesArray));
-
-
         CirclePageIndicator indicator = (CirclePageIndicator) findViewById(R.id.indicator);
-
         indicator.setViewPager(mPager);
-
         final float density = getResources().getDisplayMetrics().density;
 
         tvDone= (TextView) findViewById(R.id.txt_done);
         tvSkip= (TextView) findViewById(R.id.txt_skip);
 
-//Set circle indicator radius
         indicator.setRadius(5 * density);
-
         NUM_PAGES =IMAGES.length;
-//
-//        // Auto start of viewpager
-//        final Handler handler = new Handler();
-//        final Runnable Update = new Runnable() {
-//            public void run() {
-//                if (currentPage == NUM_PAGES) {
-//                    currentPage = 0;
-//                }
-//                mPager.setCurrentItem(currentPage++, true);
-//            }
-//        };
-//        Timer swipeTimer = new Timer();
-//        swipeTimer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                handler.post(Update);
-//            }
-//        }, 3000, 3000);
 
-        // Pager listener over indicator
         indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
         {
 
@@ -101,41 +79,19 @@ public class HelpActivity  extends AppCompatActivity
             }
 
             @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
+            public void onPageScrolled(int pos, float arg1, int arg2)
+            {
                 if(pos==2||pos==1||pos==0)
                 {
                     tvSkip.setVisibility(View.VISIBLE);
-                    tvDone.setOnClickListener(new View.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(View v)
-                        {
-                            onDoneClicked();
-                        }
-                    });
-
-                    tvSkip.setOnClickListener(new View.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(View v)
-                        {
-                            mPager.setCurrentItem(mPager.getCurrentItem()+1,true);
-                        }
-                    });
-                }
+                    tvDone.setOnClickListener(context);
+                    tvSkip.setOnClickListener(context);
+                 }
 
                 else if(pos==3)
                 {
                     tvSkip.setVisibility(View.INVISIBLE);
-                    tvDone.setOnClickListener(new View.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(View v)
-                        {
-                            onDoneClicked();
-                        }
-                    });
-
+                    tvDone.setOnClickListener(context);
                 }
             }
 
@@ -151,7 +107,24 @@ public class HelpActivity  extends AppCompatActivity
 
     private void onDoneClicked()
     {
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        this.finish();
     }
 
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.txt_done:
+                onDoneClicked();
+                break;
+
+            case R.id.txt_skip:
+                mPager.setCurrentItem(mPager.getCurrentItem()+1,true);
+                break;
+
+            default:
+                break;
+        }
+    }
 }
