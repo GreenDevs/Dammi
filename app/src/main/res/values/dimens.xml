@@ -10,4 +10,7 @@
     <dimen name="text_size_featured">18sp</dimen>
     <dimen name="circle_dia_small">46dp</dimen>
     <dimen name="text_size_small">14sp</dimen>
+    <dimen name="profile_size">200dp</dimen>
+    <dimen name="profile_size_smal">160dp</dimen>
+    <dimen name="host_icons_size_s">20dp</dimen>
 </resources>

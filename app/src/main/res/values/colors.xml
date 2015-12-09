@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#F44336</color>
-    <color name="primaryDark">#C62828</color>
+    <color name="primary">#f89820</color>
+    <color name="primaryDark">#f78d1e</color>
     <color name="colorAccent">@color/primary</color>
 
     <color name="white">#fff</color>
@@ -11,6 +11,8 @@
     <color name="nav_icon_color">#444</color>
     <color name="nav_text_color">#333</color>
     <color name="grey">#3c3c3c</color>
+
+
 
     <!--Hamro patro ko colors -->
 

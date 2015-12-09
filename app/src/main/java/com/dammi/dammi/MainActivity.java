@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity
     private HomeAdapter homeAdapter;
     private Toolbar toolbar;
 
-    private RequestQueue requestQueue;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -68,9 +66,6 @@ public class MainActivity extends AppCompatActivity
         appIntro();
         context = this;
         init();
-        VolleySingleton singleton= VolleySingleton.getInstance();
-        requestQueue=singleton.getQueue();
-       // sendNewsRequest();
     }
 
 
@@ -79,10 +74,6 @@ public class MainActivity extends AppCompatActivity
         //FOR TOOL BAR
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.logo);
-
-//        //transparent status bar
-//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         //FOR RECYCLER VIEW HOME
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.homeRecycler);
@@ -122,49 +113,6 @@ public class MainActivity extends AppCompatActivity
             homeAdapter.getSliderLayout().stopAutoCycle();
         super.onStop();
     }
-
-
-
-    private void sendNewsRequest()
-    {
-
-        final String URL="http://www.goalnepal.com/json_news_2015.php?page=1";
-
-        CacheRequest newsRequest=new CacheRequest(Request.Method.GET, URL,
-
-                new Response.Listener<NetworkResponse>()
-                {
-                    @Override
-                    public void onResponse(NetworkResponse response)
-                    {
-                        try
-                        {
-                            final String jsonResponseString=new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-                            JSONObject responseJson=new JSONObject(jsonResponseString);
-
-                            Toast.makeText(context, ""+responseJson.toString(), Toast.LENGTH_SHORT).show();
-
-                        }
-                        catch (UnsupportedEncodingException | JSONException e)
-                        {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                ,
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        Toast.makeText(context, "Parse Exception", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        newsRequest.setTag(this);
-        requestQueue.add(newsRequest);
-    }
-
 
 
     private void appIntro()

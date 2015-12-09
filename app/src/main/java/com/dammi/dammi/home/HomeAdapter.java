@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.dammi.dammi.R;
 
@@ -32,8 +33,8 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         data.add("SLIDE SHOW HERE");
        // data.add(new GridItem("FEATURED\nEXPERIENCES", R.drawable.geothermal));
-        data.add(new GridItem("DAMMI\nACTIVITIES", R.drawable.colombo));
-        data.add(new GridItem("DAMMI\nHOSTS", R.drawable.burren));
+        data.add(new GridItem("DAMMI\nEXPERIENCES", R.drawable.dammi_experience));
+        data.add(new GridItem("DAMMI\nHOSTS", R.drawable.dammi_host));
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
@@ -62,21 +63,16 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
          switch (type)
          {
              case SLIDE_SHOW:
-                int[] imagesDrawables={R.drawable.australia,R.drawable.burren,R.drawable.colombo,R.drawable.geothermal,R.drawable.higenic};
-                 final String[] names = {"australia","burren","colombo","geothermal","higenic"};
-                 final String[] snacks = {"enjoy australia","burren welcomes you","colombo is wicked","geothermal is hot ","higenic sucks"};
-
+                int[] imagesDrawables={R.drawable.traditional_newari, R.drawable.oneday_city,R.drawable.pokhara_sky_drive,R.drawable.tansen_ultra,R.drawable.cookwith_local};
+                 final String[] names = {"Newari","One Day City","Pokhara Sky Diving","Tansen Ultra", "Cooking With Locals"};
 
                     for(int i=0;i<imagesDrawables.length;i++)
                     {
                         slideHolder=(SlideItemViewHolder)viewHolder;
-                        TextSliderView textSliderView = new TextSliderView(context);
-
-
+                        DefaultSliderView defaultSliderView=new DefaultSliderView(context);
                         final int finalI = i;
-                        textSliderView
+                        defaultSliderView
 
-                                .description("Experiences:"+snacks[i])
                                 .image(imagesDrawables[i])
                                 .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
                                     @Override
@@ -85,7 +81,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                                     }
                                 });
 
-                        slideHolder.sliderShow.addSlider(textSliderView);
+                        slideHolder.sliderShow.addSlider(defaultSliderView);
 
                     }
 
