@@ -35,6 +35,7 @@ public class ListActivity extends AppCompatActivity
         toolbar=(Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
+        isListView = true;
         setDrawer();
 
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.list_recycler);
@@ -54,7 +55,7 @@ public class ListActivity extends AppCompatActivity
         recyclerView.setItemAnimator(new SlideInUpAnimator());
         recyclerView.setLayoutManager(mStaggeredGridLayoutManager);
         recyclerView.setAdapter(new ListAdapter(this));
-        isListView = false;
+
 
     }
 
@@ -88,12 +89,12 @@ public class ListActivity extends AppCompatActivity
       MenuItem  item = menu.findItem(R.id.action_toggle);
         if (isListView) {
             mStaggeredGridLayoutManager.setSpanCount(2);
-            item.setIcon(R.drawable.ic_action_list);
+            item.setIcon(R.drawable.ic_view_list_white_24dp);
             item.setTitle("Show as list");
             isListView = false;
         } else {
             mStaggeredGridLayoutManager.setSpanCount(1);
-            item.setIcon(R.drawable.ic_action_grid);
+            item.setIcon(R.drawable.ic_dashboard_white_24dp);
             item.setTitle("Show as grid");
             isListView = true;
         }

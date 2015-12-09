@@ -83,7 +83,7 @@
             android:text="4N/3D"
             android:textStyle="bold"
             android:textColor="#fff"
-            android:layout_margin="20dp"
+            android:layout_margin="5dp"
             android:background="@drawable/circle"
             android:layout_width="@dimen/circle_dia_large"
             android:layout_height="@dimen/circle_dia_large"
