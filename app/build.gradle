@@ -50,5 +50,7 @@ dependencies {
     compile 'jp.wasabeef:recyclerview-animators:1.2.0@aar'
 
     compile 'fr.avianey.com.viewpagerindicator:library:2.4.1@aar'
+    //view pager strip
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
 
 }

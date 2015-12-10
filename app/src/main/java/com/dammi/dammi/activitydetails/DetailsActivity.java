@@ -19,6 +19,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.dammi.dammi.R;
 import com.dammi.dammi.activitydetails.fragments.ExpDetailsFragment;
 import com.dammi.dammi.activitydetails.fragments.ExperienceFragment;
@@ -94,6 +95,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         adapter.addFragment(new AboutUsFragment(), "ABOUT US");
         adapter.addFragment(new RateReviewFragment(), "REVIEWS");
         viewPager.setAdapter(adapter);
+
     }
 
     private void setTabLayout()
