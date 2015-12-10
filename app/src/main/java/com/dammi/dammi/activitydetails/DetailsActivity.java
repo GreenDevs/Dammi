@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.WebView;
 
 import com.dammi.dammi.R;
 import com.dammi.dammi.activitydetails.fragments.ExpDetailsFragment;
@@ -25,7 +26,8 @@ import com.dammi.dammi.activitydetails.fragments.RateReviewFragment;
 import com.dammi.dammi.activitydetails.fragments.AboutUsFragment;
 import com.dammi.dammi.activitydetails.fragments.ViewPagerAdapter;
 
-public class DetailsActivity extends AppCompatActivity implements View.OnClickListener {
+public class DetailsActivity extends AppCompatActivity implements View.OnClickListener
+{
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
@@ -34,20 +36,22 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private FloatingActionButton fab, fab1, fab2;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward;
     private DetailsActivity context;
+    private MyWebView web;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         context = this;
         init();
         initFab();
 
-
     }
 
-    private void init() {
+    private void init()
+    {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.mToolbar);
         setSupportActionBar(toolbar);
@@ -65,7 +69,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             setTabLayout();
     }
 
-    private void initFab() {
+    private void initFab()
+    {
         fab = (FloatingActionButton) findViewById(R.id.fab_add);
         fab1 = (FloatingActionButton) findViewById(R.id.fab_phone);
         fab2 = (FloatingActionButton) findViewById(R.id.fab_book);
@@ -76,9 +81,12 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         fab.setOnClickListener(context);
         fab1.setOnClickListener(context);
         fab2.setOnClickListener(context);
+
+        web=new MyWebView();
     }
 
-    private void setViewPager() {
+    private void setViewPager()
+    {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new ExperienceFragment(), "OVERVIEW");
@@ -88,23 +96,28 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         viewPager.setAdapter(adapter);
     }
 
-    private void setTabLayout() {
+    private void setTabLayout()
+    {
 
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
+        {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
+            public void onTabSelected(TabLayout.Tab tab)
+            {
                 viewPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+            public void onTabUnselected(TabLayout.Tab tab)
+            {
 
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+            public void onTabReselected(TabLayout.Tab tab)
+            {
 
             }
         });
@@ -113,7 +126,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
 
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -128,7 +142,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         int id = v.getId();
         switch (id) {
             case R.id.fab_add:
@@ -140,16 +155,18 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 Log.d("Raj", "Fab 1");
                 break;
             case R.id.fab_book:
-
+                startActivity(new Intent(this, MyWebView.class));
                 Log.d("Raj", "Fab 2");
                 break;
         }
     }
 
 
-    public void animateFAB() {
+    public void animateFAB()
+    {
 
-        if (isFabOpen) {
+        if (isFabOpen)
+        {
 
             fab.startAnimation(rotate_backward);
             fab1.startAnimation(fab_close);
@@ -159,7 +176,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             isFabOpen = false;
             Log.d("Raj", "close");
 
-        } else {
+        }
+        else
+        {
 
             fab.startAnimation(rotate_forward);
             fab1.startAnimation(fab_open);
@@ -172,11 +191,14 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    private void call() {
-        try {
+    private void call()
+    {
+        try
+        {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
             callIntent.setData(Uri.parse("tel:123456789"));
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
+            {
                 // TODO: Consider calling
                 //    ActivityCompat#requestPermissions
                 // here to request the missing permissions, and then overriding
@@ -187,9 +209,14 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 return;
             }
             startActivity(callIntent);
-        } catch (ActivityNotFoundException activityException) {
-            Log.e("helloandroid dialing example", "Call failed"+activityException);
+        }
+        catch (ActivityNotFoundException activityException)
+        {
+            Log.e("hello android dialing ", "Call failed"+activityException);
         }
     }
 
+
 }
+
+
