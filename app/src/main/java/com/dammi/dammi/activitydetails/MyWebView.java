@@ -25,7 +25,6 @@ public class MyWebView extends AppCompatActivity
         setContentView(R.layout.web_view);
 
         init();
-
     }
 
     private void init()
