@@ -54,7 +54,7 @@
             <TextView
                 android:id="@+id/activity_location"
                 android:textSize="@dimen/text_size_small"
-                android:textColor="@color/patro_orange"
+                android:textColor="@color/primary"
                 android:text="CUSO.PERU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

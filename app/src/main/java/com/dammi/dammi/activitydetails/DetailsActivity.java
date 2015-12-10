@@ -49,10 +49,10 @@ public class DetailsActivity extends AppCompatActivity
     private void setViewPager(){
 
         ViewPagerAdapter adapter=new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ExperienceFragment(), "ABOUT EXPERIENCE");
-        adapter.addFragment(new ExpDetailsFragment(), "EXPERIENCE DETAILS");
-        adapter.addFragment(new AboutUsFragment(), "ABOUT HOSTS");
-        adapter.addFragment(new RateReviewFragment(), "RATE AND REVIEW");
+        adapter.addFragment(new ExperienceFragment(), "OVERVIEW");
+        adapter.addFragment(new ExpDetailsFragment(), "DETAILS");
+        adapter.addFragment(new AboutUsFragment(), "ABOUT US");
+        adapter.addFragment(new RateReviewFragment(), "REVIEWS");
         viewPager.setAdapter(adapter);
     }
 
