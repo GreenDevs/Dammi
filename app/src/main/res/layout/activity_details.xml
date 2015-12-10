@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_marginRight="@dimen/fab_margin"
-                android:visibility="visible"
+                android:visibility="invisible"
                 app:backgroundTint="@color/colorFAB2"
                 app:elevation="6dp"
                 android:layout_margin="5dp"
@@ -113,7 +113,7 @@
                 android:layout_gravity="bottom|end"
                 android:layout_margin="5dp"
                 android:layout_marginRight="@dimen/fab_margin"
-                android:visibility="visible"
+                android:visibility="invisible"
                 app:elevation="6dp"
                 app:backgroundTint="@color/colorFAB1"
                 app:pressedTranslationZ="12dp"
@@ -130,7 +130,6 @@
                 android:src="@drawable/ic_add_white_24dp" />
 
         </LinearLayout>
-
 
     </RelativeLayout>
 
