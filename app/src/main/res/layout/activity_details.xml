@@ -59,7 +59,7 @@
         -->
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab2"
+        android:id="@+id/fab_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="160dp"
@@ -69,9 +69,9 @@
         app:backgroundTint="@color/colorFAB2"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"
-        android:src="@drawable/ic_done_white_24dp" />
+        android:src="@drawable/ic_phone_white_24dp" />
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab1"
+        android:id="@+id/fab_book"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="90dp"
@@ -81,9 +81,9 @@
         app:elevation="6dp"
         app:backgroundTint="@color/colorFAB1"
         app:pressedTranslationZ="12dp"
-        android:src="@drawable/ic_action_list" />
+        android:src="@drawable/ic_receipt_white_24dp" />
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -91,6 +91,6 @@
         app:backgroundTint="@color/colorAccent"
         app:pressedTranslationZ="12dp"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_face_white_24dp" />
+        android:src="@drawable/ic_add_white_24dp" />
 
 </android.support.design.widget.CoordinatorLayout>
