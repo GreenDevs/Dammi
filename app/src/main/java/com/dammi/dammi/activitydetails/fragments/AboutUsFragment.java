@@ -14,6 +14,16 @@ import com.dammi.dammi.R;
  */
 public class AboutUsFragment extends Fragment {
 
+
+    private static final String HOST_ID="operator_id";
+    private static final String HOST_NAME="operator_name";
+    private static final String TITLE="title";
+    private static final String OVERVIEW="overview";
+    private static final String PARTICIPANT_COUNT="participant";
+    private static final String DURATION="duration";
+    private static final String COVER_PIC="cover_pic";
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

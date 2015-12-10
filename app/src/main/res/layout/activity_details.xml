@@ -6,15 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-
-
-    </android.support.v4.widget.NestedScrollView>
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -27,6 +18,7 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
             <ImageView
+                android:id="@+id/cover_pic"
                 android:layout_width="match_parent"
                 android:layout_height="256dp"
                 android:scaleType="centerCrop"
@@ -59,29 +51,12 @@
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
-            android:layout_gravity="bottom|right"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/tab_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="9">
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_marginTop="16dp"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/tab_viewpager"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-            </LinearLayout>
-
-            </LinearLayout>
-
-        </android.support.v4.widget.NestedScrollView>
-
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </android.support.v4.widget.NestedScrollView>
 
     <RelativeLayout
         android:layout_width="match_parent"

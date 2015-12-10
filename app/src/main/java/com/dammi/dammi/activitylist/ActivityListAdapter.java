@@ -2,6 +2,7 @@ package com.dammi.dammi.activitylist;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -49,6 +50,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position)
     {
+
         final MyViewHolder holder=(MyViewHolder)viewHolder;
         ActivityItem item=data.get(position);
 
@@ -60,7 +62,6 @@ public class ActivityListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         ImageLoader loader= VolleySingleton.getInstance().getmImageLoader();
 
-        Log.i("IMAGE URL", item.imageUrl);
         loader.get(item.imageUrl, new ImageLoader.ImageListener() {
             @Override
             public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
@@ -70,7 +71,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                holder.bgImage.setImageResource(R.drawable.geothermal);
+                holder.bgImage.setImageResource(R.drawable.oops_loading);
             }
         });
 
@@ -106,12 +107,14 @@ public class ActivityListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         @Override
         public void onClick(View v) {
 
-            context.startActivity(new Intent(context, DetailsActivity.class));
+            ActivityItem item=data.get(getAdapterPosition());
+            Intent intent=new Intent(context, DetailsActivity.class);
+            Bundle bunlde=new Bundle();
+            bunlde.putInt(DetailsActivity.ACT_ID_TAG, item.actId);
+            bunlde.putString(DetailsActivity.TITLE, item.title);
+            intent.putExtra(DetailsActivity.BUNLDE_TAG, bunlde);
+            context.startActivity(intent);
         }
     }
-
-
-
-
 
 }

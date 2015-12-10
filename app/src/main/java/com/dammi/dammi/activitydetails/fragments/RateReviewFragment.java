@@ -25,6 +25,7 @@ public class RateReviewFragment extends Fragment
         View view=inflater.inflate(R.layout.booking_form, container, false);
         wv1=(WebView)view.findViewById(R.id.webView);
         wv1.setWebViewClient(new MyBrowser());
+
         triggerWeb();
         return view;
     }
