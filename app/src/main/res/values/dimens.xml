@@ -13,4 +13,6 @@
     <dimen name="profile_size">200dp</dimen>
     <dimen name="profile_size_smal">160dp</dimen>
     <dimen name="host_icons_size_s">20dp</dimen>
+
+    <dimen name="fab_margin">5dp</dimen>
 </resources>
