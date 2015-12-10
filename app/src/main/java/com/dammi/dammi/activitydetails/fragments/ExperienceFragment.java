@@ -18,7 +18,8 @@ public class ExperienceFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         View view=inflater.inflate(R.layout.about_experience, container, false);
 
         ImageView rate_icon=(ImageView)view.findViewById(R.id.rate_icon);
