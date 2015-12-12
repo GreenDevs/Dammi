@@ -43,7 +43,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     //API PARTS
 
-    private static final String URL="http://dammitravels.com/?table=activity_main&&a_id=";
+    private static final String URL="http://dammitravels.com/api/?table=activity_main&&a_id=";
     private static final String AVERAGE_RATING="rating_avg";
     public static final String TITLE="title";
     private static final String COVER_PIC="cover_pic";
@@ -299,7 +299,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         if(jsonObject!=null){
 
             try {
-                String imageUrl= MyApplication.HOME_URL+"/"+jsonObject.getString(COVER_PIC);
+                String imageUrl= MyApplication.HOME_URL+"/api/"+jsonObject.getString(COVER_PIC);
                 setCoverPic(imageUrl);
             } catch (JSONException e) {
                 e.printStackTrace();
