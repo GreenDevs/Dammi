@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -30,17 +29,17 @@ import java.util.List;
 public class HostActivity extends AppCompatActivity {
 
     private static final String URL="http://www.dammitravels.com/api/?table=operator_list&&sort_by=ratingasc";
-    private static final String HOST_NAME="name";//
-    private static final String RATING="rating";//
-    private static final String ACTIVITY_COUNT="no_of_activities"; //
-    private static final String EVENT_COUNT="no_of_events";//
-    private static final String IMAGE_URL="o_pic";//
+    private static final String HOST_NAME="name";
+    private static final String RATING="rating";
+    private static final String ACTIVITY_COUNT="no_of_activities";
+    private static final String EVENT_COUNT="no_of_events";
+    private static final String IMAGE_URL="o_pic";
 
-    private static final String ACTIVITY_ID="o_id";
-    private static final String ADDRESS="address";//
-    private static final String MOBILE_NUMBER_1="mob_no1";
-    private static final String MOBILE_NUMBER_2="mob_no2";
-    private static final String DESCRIPTION="description";
+//    private static final String ACTIVITY_ID="o_id";
+//    private static final String ADDRESS="address";
+//    private static final String MOBILE_NUMBER_1="mob_no1";
+//    private static final String MOBILE_NUMBER_2="mob_no2";
+//    private static final String DESCRIPTION="description";
 
 
     private RequestQueue requestQueue;
@@ -53,8 +52,6 @@ public class HostActivity extends AppCompatActivity {
 
         requestQueue= VolleySingleton.getInstance().getQueue();
         sendRequest();
-
-
     }
 
     private void init()
@@ -76,24 +73,6 @@ public class HostActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch(item.getItemId()){
-            case android.R.id.home:
-                this.finish();
-                break;
-
-            default:
-                break;
-        }
-
-        return true;
-    }
-
-
-
-
     private void sendRequest()
     {
         CacheRequest cacheRequest = new CacheRequest(Request.Method.GET,URL, new Response.Listener<NetworkResponse>() {
@@ -111,8 +90,7 @@ public class HostActivity extends AppCompatActivity {
                 }
 
                 List<HostItem> list = parseJson(jsonArray);
-                Toast.makeText(HostActivity.this, "List size="+list.size(),Toast.LENGTH_LONG).show();
-                 mAdapter.updateAdapter(list);
+                mAdapter.updateAdapter(list);
             }
         }
         ,
@@ -135,8 +113,8 @@ public class HostActivity extends AppCompatActivity {
                 for(int i=0;i<jsonArray.length();i++){
 
                     JSONObject jsonObject;
-                    String hostName,address,rating,imageUrl,mobileNo1,mobileNo2,description;
-                    int hostId,activityCount,eventCount;
+                    String hostName,rating,imageUrl;//mobileNo1,mobileNo2,description,address;
+                    int activityCount,eventCount;//hostId;
 
                     try {
                         jsonObject = jsonArray.getJSONObject(i);
@@ -164,4 +142,22 @@ public class HostActivity extends AppCompatActivity {
         }
         return hostItemList;
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()){
+            case android.R.id.home:
+                this.finish();
+                break;
+
+            default:
+                break;
+        }
+
+        return true;
+    }
+
+
 }
