@@ -9,7 +9,7 @@ import android.content.Context;
 public class MyApplication extends Application
 {
     private static MyApplication sInstance;
-    public static final String HOME_URL="http://dammitravels.netai.net/";
+    public static final String HOME_URL="http://dammitravels.com/";
     @Override
     public void onCreate()
     {

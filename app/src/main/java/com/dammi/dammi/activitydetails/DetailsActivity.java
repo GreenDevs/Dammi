@@ -43,7 +43,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     //API PARTS
 
-    private static final String URL="http://dammitravels.netai.net/?table=activity_main&&a_id=";
+    private static final String URL="http://dammitravels.com/?table=activity_main&&a_id=";
     private static final String AVERAGE_RATING="rating_avg";
     public static final String TITLE="title";
     private static final String COVER_PIC="cover_pic";

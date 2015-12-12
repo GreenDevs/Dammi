@@ -34,7 +34,7 @@ import java.util.List;
 public class ListActivity extends AppCompatActivity
 {
     ///JSON PARTS
-    private static final String URL="http://dammitravels.netai.net/?table=list&&sort_by=costasc";
+    private static final String URL="http://dammitravels.com/api/?table=list&&sort_by=costasc";
     private static final String ACTIVITY_ID="activity_id";
     private static final String HOST_NAME="operator_name";
     private static final String TITLE="title";
