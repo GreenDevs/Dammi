@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -107,6 +108,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         @Override
         public void onClick(View v) {
 
+            Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show();
             ActivityItem item=data.get(getAdapterPosition());
             Intent intent=new Intent(context, DetailsActivity.class);
             Bundle bunlde=new Bundle();

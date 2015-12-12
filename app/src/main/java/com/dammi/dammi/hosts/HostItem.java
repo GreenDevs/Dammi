@@ -5,12 +5,12 @@ package com.dammi.dammi.hosts;
  */
 public class HostItem
 {
-    int image,bgImage;
+    String image,bgImage;
     String rating;
     String about;
     int noOfActivities,noOfEvents;
 
-    public HostItem(int image, String rating, String about, int noOfActivities,int noOfEvents,int bgImage)
+    public HostItem(String image, String rating, String about, int noOfActivities,int noOfEvents,String bgImage)
     {
         this.image = image;
         this.rating = rating;
